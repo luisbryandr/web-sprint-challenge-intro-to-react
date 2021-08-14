@@ -13,11 +13,11 @@ const [error, setError] =  useState(null);
 useEffect(()=>{
   axios.get('https://swapi.dev/api/people')
   .then(res => {
-    setCharacters(res.data)
+    setCharacters(res.map())
   })
   .catch(err =>{
     console.log(err);
-    return 'error Chewie & Solo is working on fixing it'
+    return console.log('error Chewie & Solo is working on fixing it')
   })
 })
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
@@ -28,6 +28,7 @@ useEffect(()=>{
     <div className="App">
       {error && <h1>{error}</h1>}
       <h1 className="Header">Star Wars Characters</h1>
+      <p>{characters.map(x=>)}</p>
       
     </div>
   );
