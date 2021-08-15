@@ -13,13 +13,13 @@ const [error, setError] =  useState(null);
 useEffect(()=>{
   axios.get('https://swapi.dev/api/people')
   .then(res => {
-    setCharacters(res.map())
+    setCharacters(res.data);
   })
   .catch(err =>{
     console.log(err);
-    return console.log('error Chewie & Solo is working on fixing it')
+    setError('error Chewie & Solo is working on fixing it')
   })
-})
+},[]);
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
@@ -28,8 +28,9 @@ useEffect(()=>{
     <div className="App">
       {error && <h1>{error}</h1>}
       <h1 className="Header">Star Wars Characters</h1>
-      <p>{characters.map(x=>)}</p>
-      
+      <div>
+      {characters.map((character,key)=> (<Character key={key} character={character}/>))}
+      </div>
     </div>
   );
 }
