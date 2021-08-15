@@ -1,13 +1,30 @@
-// Write your Character component here
-import React from 'react'
+import React from 'react';
+import styled from  'styled-components';
+export default function Character(props){
+    const {character} =props;
 
-export default function Character(props) {
-    const {character} = props ;
-    // need to process a function that goes over the data received from the api and returns me what i want to see on my page -- this case name and birth year
-    return (
+    const CharContainer = styled.section`
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 13%;
+    margin:2%;
+    &:hover{
+        color:black;
+        transform:scale(3);
+        transition: all 0.5s ease-in-out;
+    }
+    `;
+
+    return(
+        <CharContainer>
         <div>
-            <div>{character.name}</div>
-            <div>{character.birth_year}</div>
+            {character.name}
         </div>
-    )
+        <div>
+            {character.birth_year}
+        </div>
+
+        </CharContainer>
+    );
 }
